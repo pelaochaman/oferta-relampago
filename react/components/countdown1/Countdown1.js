@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import moment from 'moment';//https://momentjs.com/docs/
 import { useEffect } from 'react'
 import Timer from 'react-compound-timer'
-
-const Countdown = ({ inicio,termino,setHide,setTerminado,dif }) => {
+import { useCssHandles } from 'vtex.css-handles'
+const Countdown = ({ inicio,termino,setHide,setTerminado,dif,handles}) => {
   //const [diferencia, setDiferencia] = useState(0);
-
+const handless = useCssHandles(handles);
   console.log("mostrando inicio desde componente 1", inicio);
   console.log("mostrando termino desde componente 1", termino);
-  //console.log("mostrando hora actual", horaA);
+  console.log("mostrando diferencia desde componente 1", dif);
  console.log("mostrando",parseInt(termino.diff(inicio)));
  //var diferenciaActual = horaA.diff(inicio);
  //console.log("diferenciaActual 1",diferenciaActual)
- var diferencia = parseInt(termino.diff(inicio)) + dif;
+ var diferencia = parseInt(termino.diff(inicio));
  console.log("diferencia 1",diferencia);
   //let duration = moment.duration(diferencia * 1000, 'milliseconds');
 const handleStop = () => {
@@ -36,11 +36,11 @@ if(diferencia){
     {({getTime,stop}) => (
         <React.Fragment>
           {getTime()<0 && stop()}
-          <div></div>
-            <Timer.Days /> :
-            <Timer.Hours /> :
-            <Timer.Minutes /> :
-            <Timer.Seconds /> oferta 1
+          <div className={`${handless.hours}`}><Timer.Hours /></div>
+          <div className={`${handless.separador}`}>:</div> 
+          <div className={`${handless.minutes}`}><Timer.Minutes /></div>
+          <div className={`${handless.separador}`}>:</div> 
+          <div className={`${handless.seconds}`}><Timer.Seconds /></div>
         </React.Fragment>
     )}
 </Timer>

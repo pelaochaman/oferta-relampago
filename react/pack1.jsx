@@ -69,7 +69,8 @@ const CSS_HANDLES = [
   'botonComprar',
   'sliderImage',
   'fuego',
-  'imgFuego'
+  'imgFuego',
+  'separador'
 ]
 const currency = function (number) {
   return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0 }).format(number);
@@ -238,7 +239,7 @@ if(horaA === horaI){
               <img className={`${count.imgCronometro}`} src="https://cdn-icons-png.flaticon.com/512/6874/6874028.png" />
             </div>
             <div className={`${count.rowRight}`} id="outline-countdown">
-              <Countdown inicio={startDate} termino={endDate} setHide={setHide} setTerminado={setTerminado} dif={diferencia}/>
+              <Countdown inicio={startDate} termino={endDate} setHide={setHide} setTerminado={setTerminado} dif={diferencia} handles={CSS_HANDLES}/>
             </div>
             <p id="message" className={`${count.message}`}></p>
           </div>

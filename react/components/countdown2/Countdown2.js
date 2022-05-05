@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import moment from 'moment';//https://momentjs.com/docs/
 import { useEffect } from 'react'
 import Timer from 'react-compound-timer'
-const Countdown2 = ({ inicio,termino,setHide,setTerminado }) => {
+import { useCssHandles } from 'vtex.css-handles'
+const Countdown2 = ({ inicio,termino,setHide,setTerminado,handles }) => {
   //const [diferencia, setDiferencia] = useState(0);
+  const handless = useCssHandles(handles);
   //var horaA = moment();
   console.log("mostrando inicio desde componente 2", inicio);
   console.log("mostrando termino desde componente 2", termino);
@@ -33,11 +35,11 @@ if(diferencia){
     {({getTime,stop}) => (
         <React.Fragment>
           {getTime()<0 && stop()}
-          <div></div>
-            <Timer.Days /> :
-            <Timer.Hours /> :
-            <Timer.Minutes /> :
-            <Timer.Seconds /> oferta 2
+          <div className={`${handless.hours}`}><Timer.Hours /></div>
+          <div className={`${handless.separador}`}>:</div> 
+          <div className={`${handless.minutes}`}><Timer.Minutes /></div>
+          <div className={`${handless.separador}`}>:</div> 
+          <div className={`${handless.seconds}`}><Timer.Seconds /></div>
         </React.Fragment>
     )}
 </Timer>
